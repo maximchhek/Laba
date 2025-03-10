@@ -48,5 +48,13 @@ namespace Laba
             pictureBox1.Image = resultImage;
             pictureBox1.Refresh();
         }
+
+        private void óâåëè÷èòüßğêîñòüToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            YarkFilter filter = new YarkFilter();
+            Bitmap resultImage = filter.processImage(image);
+            pictureBox1.Image = resultImage;
+            pictureBox1.Refresh();
+        }
     }
 }

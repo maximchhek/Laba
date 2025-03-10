@@ -66,10 +66,38 @@ namespace Laba
             Color pixelColor = sourceimage.GetPixel(x, y);
             int k = 20;
 
-            Color resultColor = Color.FromArgb(pixelColor.R + 2 * k, pixelColor.G + k / 2, pixelColor.B - 1 * k);
+            int intensity = (int)(0.299 * pixelColor.R + 0.587 * pixelColor.G + 0.114 * pixelColor.B);
+
+            Color resultColor = Color.FromArgb(intensity + 2 * k < 0 ? 0 : (intensity + 2 * k > 255 ? 255 : intensity + 2 * k), intensity + (int)(0.5 * k) < 0 ? 0 : (intensity + (int)(0.5 * k) > 255 ? 255 : intensity + (int)(0.5 * k)), intensity - k < 0 ? 0 : (intensity - k > 255 ? 255 : intensity - k));
 
             return resultColor;
         }
 
     }
+
+    class YarkFilter : Filters
+    {
+        protected override Color calculateNewPixelColor(Bitmap sourceimage, int x, int y)
+        {
+            Color pixelColor = sourceimage.GetPixel(x, y);
+
+            Color resultColor = Color.FromArgb(pixelColor.R + 20 < 0 ? 0 : (pixelColor.R + 20 > 255 ? 255 : pixelColor.R + 20), pixelColor.G + 20 < 0 ? 0 : (pixelColor.G + 20 > 255 ? 255 : pixelColor.G +20), pixelColor.B + 20 < 0 ? 0 : (pixelColor.B + 20 > 255 ? 255 : pixelColor.B + 20));
+
+            return resultColor;
+        }
+
+    }
+
+    class Sdvig : Filters
+    {
+        protected override Color calculateNewPixelColor(Bitmap sourceimage, int x, int y)
+        {
+            Color pixelColor = sourceimage.GetPixel(x, y);
+
+            Color resultColor = Color.FromArgb(pixelColor.R + 20 < 0 ? 0 : (pixelColor.R + 20 > 255 ? 255 : pixelColor.R + 20), pixelColor.G + 20 < 0 ? 0 : (pixelColor.G + 20 > 255 ? 255 : pixelColor.G + 20), pixelColor.B + 20 < 0 ? 0 : (pixelColor.B + 20 > 255 ? 255 : pixelColor.B + 20));
+
+            return resultColor;
+        }
+    }
+
 }

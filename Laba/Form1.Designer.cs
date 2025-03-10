@@ -36,8 +36,9 @@
             точечныеToolStripMenuItem = new ToolStripMenuItem();
             инверсияToolStripMenuItem = new ToolStripMenuItem();
             оттенкиСерогоToolStripMenuItem = new ToolStripMenuItem();
-            матричныеToolStripMenuItem = new ToolStripMenuItem();
             сепияToolStripMenuItem = new ToolStripMenuItem();
+            матричныеToolStripMenuItem = new ToolStripMenuItem();
+            увеличитьЯркостьToolStripMenuItem = new ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             menuStrip1.SuspendLayout();
             SuspendLayout();
@@ -83,7 +84,7 @@
             // 
             // точечныеToolStripMenuItem
             // 
-            точечныеToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { инверсияToolStripMenuItem, оттенкиСерогоToolStripMenuItem, сепияToolStripMenuItem });
+            точечныеToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { инверсияToolStripMenuItem, оттенкиСерогоToolStripMenuItem, сепияToolStripMenuItem, увеличитьЯркостьToolStripMenuItem });
             точечныеToolStripMenuItem.Name = "точечныеToolStripMenuItem";
             точечныеToolStripMenuItem.Size = new Size(180, 22);
             точечныеToolStripMenuItem.Text = "Точечные";
@@ -102,18 +103,25 @@
             оттенкиСерогоToolStripMenuItem.Text = "Оттенки серого";
             оттенкиСерогоToolStripMenuItem.Click += оттенкиСерогоToolStripMenuItem_Click;
             // 
-            // матричныеToolStripMenuItem
-            // 
-            матричныеToolStripMenuItem.Name = "матричныеToolStripMenuItem";
-            матричныеToolStripMenuItem.Size = new Size(180, 22);
-            матричныеToolStripMenuItem.Text = "Матричные";
-            // 
             // сепияToolStripMenuItem
             // 
             сепияToolStripMenuItem.Name = "сепияToolStripMenuItem";
             сепияToolStripMenuItem.Size = new Size(180, 22);
             сепияToolStripMenuItem.Text = "Сепия";
             сепияToolStripMenuItem.Click += сепияToolStripMenuItem_Click;
+            // 
+            // матричныеToolStripMenuItem
+            // 
+            матричныеToolStripMenuItem.Name = "матричныеToolStripMenuItem";
+            матричныеToolStripMenuItem.Size = new Size(180, 22);
+            матричныеToolStripMenuItem.Text = "Матричные";
+            // 
+            // увеличитьЯркостьToolStripMenuItem
+            // 
+            увеличитьЯркостьToolStripMenuItem.Name = "увеличитьЯркостьToolStripMenuItem";
+            увеличитьЯркостьToolStripMenuItem.Size = new Size(180, 22);
+            увеличитьЯркостьToolStripMenuItem.Text = "Увеличить яркость";
+            увеличитьЯркостьToolStripMenuItem.Click += увеличитьЯркостьToolStripMenuItem_Click;
             // 
             // Form1
             // 
@@ -145,5 +153,6 @@
         private ToolStripMenuItem матричныеToolStripMenuItem;
         private ToolStripMenuItem оттенкиСерогоToolStripMenuItem;
         private ToolStripMenuItem сепияToolStripMenuItem;
+        private ToolStripMenuItem увеличитьЯркостьToolStripMenuItem;
     }
 }
