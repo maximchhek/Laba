@@ -32,6 +32,20 @@ namespace Laba
             return resultImage;
         }
 
+        public Bitmap reverseprocessImage(Bitmap sourceImage)
+        {
+            Bitmap resultImage = new Bitmap(sourceImage.Width, sourceImage.Height);
+
+            for (int i = sourceImage.Width-1; i >= 0; i--)
+            {
+                for (int j = sourceImage.Height - 1; j > 0; j--)
+                {
+                    resultImage.SetPixel(i, j, calculateNewPixelColor(sourceImage, i, j));
+                }
+            }
+
+            return resultImage;
+        }
     }
 
     class InvertFilter : Filters
@@ -103,4 +117,18 @@ namespace Laba
         }
     }
 
+    class SdvigRev : Filters
+    {
+        protected override Color calculateNewPixelColor(Bitmap sourceimage, int x, int y)
+        {
+            Color resultColor;
+
+            if (x >= 50)
+                resultColor = sourceimage.GetPixel(x - 50, y);
+            else
+                resultColor = Color.FromArgb(0, 0, 0);
+
+            return (resultColor);
+        }
+    }
 }

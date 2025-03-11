@@ -69,5 +69,14 @@ namespace Laba
             pictureBox1.Image = resultImage;
             pictureBox1.Refresh();
         }
+
+        private void ñäâèãÍà50ÂïğàâîToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Filters filter = new SdvigRev();
+            Bitmap resultImage = filter.reverseprocessImage(image);
+            image = resultImage;
+            pictureBox1.Image = resultImage;
+            pictureBox1.Refresh();
+        }
     }
 }
