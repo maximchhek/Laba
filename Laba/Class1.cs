@@ -92,9 +92,12 @@ namespace Laba
     {
         protected override Color calculateNewPixelColor(Bitmap sourceimage, int x, int y)
         {
-            Color pixelColor = sourceimage.GetPixel(x, y);
+            Color resultColor;
 
-            Color resultColor = Color.FromArgb(pixelColor.R + 20 < 0 ? 0 : (pixelColor.R + 20 > 255 ? 255 : pixelColor.R + 20), pixelColor.G + 20 < 0 ? 0 : (pixelColor.G + 20 > 255 ? 255 : pixelColor.G + 20), pixelColor.B + 20 < 0 ? 0 : (pixelColor.B + 20 > 255 ? 255 : pixelColor.B + 20));
+            if(x < sourceimage.Width - 50)
+                resultColor = sourceimage.GetPixel(x + 50, y);
+            else
+                resultColor = Color.FromArgb(255, 255, 255);
 
             return resultColor;
         }

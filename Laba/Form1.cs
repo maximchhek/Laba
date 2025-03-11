@@ -16,7 +16,7 @@ namespace Laba
         private void ÓÚÍ˚Ú¸ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             OpenFileDialog dialog = new OpenFileDialog();
-            dialog.Filter = "Image files|*.png;*.bmp|All files(*.*)|*.*";
+            dialog.Filter = "Image files|*.png;*.bmp;*.jpg|All files(*.*)|*.*";
             if (dialog.ShowDialog() == DialogResult.OK)
             {
                 image = new Bitmap(dialog.FileName);
@@ -29,6 +29,7 @@ namespace Laba
         {
             InvertFilter filter = new InvertFilter();
             Bitmap resultImage = filter.processImage(image);
+            image = resultImage;
             pictureBox1.Image = resultImage;
             pictureBox1.Refresh();
         }
@@ -37,6 +38,7 @@ namespace Laba
         {
             GreyFilter filter = new GreyFilter();
             Bitmap resultImage = filter.processImage(image);
+            image = resultImage;
             pictureBox1.Image = resultImage;
             pictureBox1.Refresh();
         }
@@ -45,6 +47,7 @@ namespace Laba
         {
             SepFilter filter = new SepFilter();
             Bitmap resultImage = filter.processImage(image);
+            image = resultImage;
             pictureBox1.Image = resultImage;
             pictureBox1.Refresh();
         }
@@ -53,6 +56,16 @@ namespace Laba
         {
             YarkFilter filter = new YarkFilter();
             Bitmap resultImage = filter.processImage(image);
+            image = resultImage;
+            pictureBox1.Image = resultImage;
+            pictureBox1.Refresh();
+        }
+
+        private void Ò‰‚Ë„Õ‡50ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Filters filter = new Sdvig();
+            Bitmap resultImage = filter.processImage(image);
+            image = resultImage;
             pictureBox1.Image = resultImage;
             pictureBox1.Refresh();
         }
