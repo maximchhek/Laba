@@ -1,3 +1,5 @@
+using System.ComponentModel;
+
 namespace Laba
 {
     public partial class Form1 : Form
@@ -27,56 +29,125 @@ namespace Laba
 
         private void èíâåğñèÿToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            InvertFilter filter = new InvertFilter();
-            Bitmap resultImage = filter.processImage(image);
-            image = resultImage;
-            pictureBox1.Image = resultImage;
-            pictureBox1.Refresh();
+            Filters filter = new InvertFilter();
+            backgroundWorker1.RunWorkerAsync(filter);
         }
 
         private void îòòåíêèÑåğîãîToolStripMenuItem_Click(object sender, EventArgs e)
         {
             GreyFilter filter = new GreyFilter();
-            Bitmap resultImage = filter.processImage(image);
-            image = resultImage;
-            pictureBox1.Image = resultImage;
-            pictureBox1.Refresh();
+            backgroundWorker1.RunWorkerAsync(filter);
         }
 
         private void ñåïèÿToolStripMenuItem_Click(object sender, EventArgs e)
         {
             SepFilter filter = new SepFilter();
-            Bitmap resultImage = filter.processImage(image);
-            image = resultImage;
-            pictureBox1.Image = resultImage;
-            pictureBox1.Refresh();
+            backgroundWorker1.RunWorkerAsync(filter);
         }
 
         private void óâåëè÷èòüßğêîñòüToolStripMenuItem_Click(object sender, EventArgs e)
         {
             YarkFilter filter = new YarkFilter();
-            Bitmap resultImage = filter.processImage(image);
-            image = resultImage;
-            pictureBox1.Image = resultImage;
-            pictureBox1.Refresh();
+            backgroundWorker1.RunWorkerAsync(filter);
         }
 
         private void ñäâèãÍà50ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Filters filter = new Sdvig();
-            Bitmap resultImage = filter.processImage(image);
-            image = resultImage;
-            pictureBox1.Image = resultImage;
-            pictureBox1.Refresh();
+            backgroundWorker1.RunWorkerAsync(filter);
         }
 
         private void ñäâèãÍà50ÂïğàâîToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Filters filter = new SdvigRev();
-            Bitmap resultImage = filter.reverseprocessImage(image);
-            image = resultImage;
-            pictureBox1.Image = resultImage;
-            pictureBox1.Refresh();
+            backgroundWorker1.RunWorkerAsync(filter);
+        }
+
+        private void òèñíåíèåToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Filters filter = new Tisnenie();
+            backgroundWorker1.RunWorkerAsync(filter);
+        }
+
+        private void ğàçìûòèåÂÄâèæåíèèToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Filters filter = new Rasmitie();
+            backgroundWorker1.RunWorkerAsync(filter);
+        }
+
+        private void ñåğûéÌèğToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Filters filter = new GrayWorld();
+            backgroundWorker1.RunWorkerAsync(filter);
+        }
+
+        private void autolevelsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Filters filter = new Autolevels();
+            backgroundWorker1.RunWorkerAsync(filter);
+        }
+
+        private void èäåàëüíûéÎòğàæàòåëüToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Filters filter = new IdealOtrazh();
+            backgroundWorker1.RunWorkerAsync(filter);
+        }
+
+        private void ğàñøèğåíèåToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Filters filter = new Rasshirenie();
+            backgroundWorker1.RunWorkerAsync(filter);
+        }
+
+        private void ñóæåíèåToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Filters filter = new Suzhenie();
+            backgroundWorker1.RunWorkerAsync(filter);
+        }
+
+        private void ìåäèàíàToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Filters filter = new Median();
+            backgroundWorker1.RunWorkerAsync(filter);
+        }
+
+        private void ôèëüòğÑîáåëÿToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Filters filter = new Sobel();
+            backgroundWorker1.RunWorkerAsync(filter);
+        }
+
+        private void ôèëüòğØàğğàToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Filters filter = new Sharr();
+            backgroundWorker1.RunWorkerAsync(filter);
+        }
+
+        private void Ñâîéñòâà_Click(object sender, EventArgs e)
+        {
+            backgroundWorker1.CancelAsync();
+        }
+
+        private void backgroundWorker1_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
+        {
+            Bitmap newImage = ((Filters)e.Argument).processImage(image, backgroundWorker1);
+            if (backgroundWorker1.CancellationPending != true)
+                image = newImage;
+        }
+
+        private void backgroundWorker1_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            progressBar1.Value = e.ProgressPercentage;
+        }
+
+        private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            if (!e.Cancelled)
+            {
+                pictureBox1.Image = image;
+                pictureBox1.Refresh();
+            }
+            progressBar1.Value = 0;
         }
     }
 }
